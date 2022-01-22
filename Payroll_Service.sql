@@ -19,3 +19,7 @@ CREATE TABLE employee_payroll
 
 -- Drop Table employee_payroll; Drop is used to Delete DB or Table
 -- Note:- SQL Queries is case insensitive
+
+
+--UC3 : Ability to create employee payroll data service database
+Insert into employee_payroll (name,salary,startDate) values('Arjun',5545,GETDATE()),('Madan',54545,GETDATE())
