@@ -23,3 +23,8 @@ CREATE TABLE employee_payroll
 
 --UC3 : Ability to create employee payroll data service database
 Insert into employee_payroll (name,salary,startDate) values('Arjun',5545,GETDATE()),('Madan',54545,GETDATE())
+
+
+--UC4 : Ability to retrieve all the employee payroll data 
+select * 
+from employee_payroll;
