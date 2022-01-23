@@ -26,7 +26,8 @@ INSERT INTO employee_payroll (name,salary,startDate) VALUES
 ('Bill', 100000.00, '2018-01-03'),
 ('Terisa', 200000.00, '2019-11-13'),
 ('Charlie', 300000.00, '2020-05-21');
-Insert into employee_payroll (name,salary,startDate) values('Arjun',5545,GETDATE()),('Madan',54545,GETDATE())
+Insert into employee_payroll (name,salary,startDate) values('Arjun',5545,GETDATE()),
+('Madan',54545,GETDATE());
 
 --Delete
 --from employee_payroll
@@ -35,4 +36,22 @@ Insert into employee_payroll (name,salary,startDate) values('Arjun',5545,GETDATE
 
 --UC4 : Ability to retrieve all the employee payroll data 
 select * 
-from employee_payroll;
+from employee_payroll;     --Retrieving Records from Table
+
+
+--UC5 : Ability to retrieve salary data for a particular
+--      employee as well as all employees who have
+--      joined in a particular data range from the
+--      payroll service database
+--Use SELECT salary FROM employee_payroll WHERE name = 'Bill’ Query to View Bill’s salary.
+select salary from employee_payroll
+where name = 'Bill';                 --where condition use to get only salary of Bill
+
+select *  from employee_payroll
+where name = 'Bill';                 --where condition use to get all details of Bill
+
+--Use Select query with Where condition View employees between start date and now date.
+select * from employee_payroll
+where startDate BETWEEN CAST('2018-01-01' as DATE) AND GETDATE();
+
+
