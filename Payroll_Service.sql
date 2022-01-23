@@ -64,9 +64,40 @@ select *  from employee_payroll      --Retrieving Records from Table
 SELECT TOP 5 * FROM [INFORMATION_SCHEMA].[COLUMNS] WHERE TABLE_NAME='employee_payroll'; --- show table information
 
 -- UC6.2:- Use Update Query to set the gender using where condition with the employee name.
-UPDATE employee_payroll set Gender = 'F' where name = 'Terisa';
+UPDATE employee_payroll set Gender = 'F' where name = 'Terisa';   --updating Gender of employees
 UPDATE employee_payroll set Gender = 'M' where name = 'Bill' or name = 'Charlie' or name = 'Arjun' or name = 'Madan';
 UPDATE employee_payroll set salary = 300000.00 where name = 'Terisa'
 UPDATE employee_payroll set salary = 500000.00 where name = 'Arjun'
 UPDATE employee_payroll set salary = 400000.00 where name = 'Madan'   --updating salary of employees
+
+
+--UC7 : Ability to find sum, average, min, max
+--and number of male and female employees
+--UC7.1:- Ability to find SUM(salary) from the number of male and female employees.
+SELECT SUM(salary) FROM employee_payroll       -- The SUM() function returns the total sum of a numeric column. 
+WHERE Gender = 'M' 
+GROUP BY Gender;   --The GROUP BY statement groups rows that have the same values into summary rows.
+
+SELECT SUM(salary) FROM employee_payroll          --The SUM() function returns the total sum of a numeric column. 
+WHERE Gender = 'F' 
+GROUP BY Gender;   --The GROUP BY statement groups rows that have the same values into summary rows.
+
+Select Gender, SUM(salary) From employee_payroll GROUP BY Gender;  -- Group the sum of employee's salaries on the basis of gender
+
+--UC7.2:- Ability to find AVG(salary) from the number of male and female employees.
+Select Gender, AVG(salary) From employee_payroll GROUP BY Gender;  -- Group the avg of employee's salaries on the basis of gender
+--AVG() function returns the average value of a numeric column.
+
+--UC7.3:- Ability to find MIN(salary) from the number of male and female employees.
+Select Gender, MIN(salary) From employee_payroll GROUP BY Gender;  -- Group the min(salary) from employees on the basis of gender
+--The MIN() function returns the smallest value of the selected column.
+
+--UC7.4:- Ability to find MAX(salary) from the number of male and female employees.
+Select Gender, MAX(salary) From employee_payroll GROUP BY Gender;  -- Group the max(salary) from employees  on the basis of gender
+--The MAX() function returns the largest value of the selected column.
+
+--UC7.5:- Ability to COUNT number of male and female employees.
+Select Gender, COUNT(name) From employee_payroll GROUP BY Gender;  -- Group the max(salary) from employees  on the basis of gender
+ --The COUNT() function returns the number of rows that matches a specified criterion.
+
 
