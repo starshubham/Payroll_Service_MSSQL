@@ -55,3 +55,18 @@ select * from employee_payroll
 where startDate BETWEEN CAST('2018-01-01' as DATE) AND GETDATE();
 
 
+--UC6 : Ability to add Gender to Employee
+--Payroll Table and Update the Rows to
+--reflect the correct Employee Gender
+--UC6.1:- Use Alter Table Command to add Field gender after the name field
+Alter Table employee_payroll add Gender varchar(1);
+select *  from employee_payroll      --Retrieving Records from Table
+SELECT TOP 5 * FROM [INFORMATION_SCHEMA].[COLUMNS] WHERE TABLE_NAME='employee_payroll'; --- show table information
+
+-- UC6.2:- Use Update Query to set the gender using where condition with the employee name.
+UPDATE employee_payroll set Gender = 'F' where name = 'Terisa';
+UPDATE employee_payroll set Gender = 'M' where name = 'Bill' or name = 'Charlie' or name = 'Arjun' or name = 'Madan';
+UPDATE employee_payroll set salary = 300000.00 where name = 'Terisa'
+UPDATE employee_payroll set salary = 500000.00 where name = 'Arjun'
+UPDATE employee_payroll set salary = 400000.00 where name = 'Madan'   --updating salary of employees
+
