@@ -101,3 +101,20 @@ Select Gender, COUNT(name) From employee_payroll GROUP BY Gender;  -- Group the 
  --The COUNT() function returns the number of rows that matches a specified criterion.
 
 
+-- UC8:- Ability to extend employee_payroll data to store employee information like employee phone, address and department.
+-- Ensure employee department is non nullable fields.
+-- Add Default Value for address field.
+-- UC8.1:- Ability to extend employee_payroll data to store employee information like employee phone.
+alter table employee_payroll add phone_number bigint;                  --Alter the table by adding new column
+alter table employee_payroll ALTER COLUMN phone_number VARCHAR(250);   --Alter any column of the table
+select *  from employee_payroll
+
+-- UC8.2:- Ability to extend employee_payroll data to store employee information like address.
+-- Add Default Value for address field.
+alter table employee_payroll add address varchar(250) NOT NULL default'Jaunpur';  --Adding address field with default value
+select *  from employee_payroll
+
+-- UC8.3:- Ability to extend employee_payroll data to store employee information like department.
+-- Ensure employee department is non nullable fields.
+alter table employee_payroll add department varchar(150) NOT NULL default 'CE';
+select *  from employee_payroll
