@@ -118,3 +118,26 @@ select *  from employee_payroll
 -- Ensure employee department is non nullable fields.
 alter table employee_payroll add department varchar(150) NOT NULL default 'CE';
 select *  from employee_payroll
+
+
+--UC9:- Ability to extend employee_payroll table to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay.
+--Ability to extend employee_payroll table salary to have Basic Pay.
+EXEC sp_RENAME 'employee_payroll.salary', 'Basic_Pay', 'COLUMN';  
+--SQL Server use sp_rename to rename the column in the Employee_payroll table from salary to Basic_Pay.
+select *  from employee_payroll;
+
+ALTER TABLE employee_payroll ADD Deductions Float;  --In MSSQL we cann't add datatype as Double
+select *  from employee_payroll;
+
+ALTER TABLE employee_payroll ADD Taxable_Pay FLOAT;  --Adding Taxable_Pay field
+select *  from employee_payroll;
+
+ALTER TABLE employee_payroll ADD Income_Tax FLOAT;    --Adding Income_Tax field
+select *  from employee_payroll;
+
+ALTER TABLE employee_payroll ADD Net_Pay FLOAT;       --Adding Net_Pay field
+select *  from employee_payroll;
+
+exec sp_help employee_payroll;
+--sp_help is executed with no arguments, summary information of objects of all types 
+--that exist in the current database is returned.
