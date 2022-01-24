@@ -141,3 +141,19 @@ select *  from employee_payroll;
 exec sp_help employee_payroll;
 --sp_help is executed with no arguments, summary information of objects of all types 
 --that exist in the current database is returned.
+
+
+-- UC10:- Ability to make Terissa as part of Sales and Marketing Department.
+-- Note: The Complete employee payroll roll need to be Inserted.
+-- If a Salary is now going to be updated multiple rows has to be updated creating unnecessary redundancy
+-- Further There is 2 Employee ID so according to Database there is two different Terissa
+
+--UC10.1:- If a Salary is now going to be updated multiple rows has to be updated creating unnecessary redundancy.
+UPDATE employee_payroll set department = 'Sales' where name = 'Terisa'; -- Updating department of Terisa
+
+INSERT INTO employee_payroll
+(name, Basic_Pay, startdate, Gender, department, Deductions, Taxable_Pay, Income_Tax, Net_Pay) VALUES
+('Terisa',300000.00, '2018-01-03','F','Marketting',100000.00, 200000.00, 50000.00,150000.00);
+
+--UC10.2:- Further There is 2 Employee ID so according to Database there is two different Terissa
+select * from employee_payroll where name='Terisa'
